@@ -7,18 +7,16 @@
     {
         $errors = array();
 
-        $login = $data['loign'];
-        $strSQLUser = "SELECT EXISTS(SELECT * FROM USERS WHERE name='$login')";
-        $rsUser = mysql_query($strSQLUser);
-        $row = mysql_fetch_assoc($rsUser);
-        print($row);
+        $login = $data['login'];
         
-       // if ($rsUser == 1){
-       //     echo "Такой логин есть в базе!";
-       // }
-       // else{
-       //     echo "Такого логина нет в базе!";
-       // }
+
+        
+        if (R::count('users', "name = ?", array($data['login'])) > 0 ){
+            echo "Такой логин есть в базе!";
+        }
+        else{
+            echo "Такого логина нет в базе!";
+        }
 
 
         //   $rsStaff = mysql_query($strSQLStaff);
