@@ -1,5 +1,5 @@
-﻿<?php 
-    require 'db.php';
+<?php 
+require 'db.php';
 
     $data = $_POST;
 
@@ -10,17 +10,26 @@
         $login = $data['login'];
         
 
+        $user = R::findOne('users', "name = ?", array($data['login']));
         
-        if (R::count('users', "name = ?", array($data['login'])) > 0 ){
-            echo "Такой логин есть в базе!";
+        if ($user){
+            if($data['password'] == $user->password){
+                $_SESSION['logged_user']  = $user;
+                echo '<div style="color:green;">Вы авторизованы.<br> Можете перейти на <a href="/">главную</a> страницу!</div><hr>';
+            }
+            else{
+                $errors[] = 'Пароль введен не верно!';
+            }
         }
         else{
-            echo "Такого логина нет в базе!";
+            $errors[] = 'Пользователь с таким логином не найден!';
         }
 
+        if (!empty($errors))
+        {
+            echo '<div style="color:red;">'.array_shift($errors).'</div><hr>';
+        }
 
-        //   $rsStaff = mysql_query($strSQLStaff);
-    //   while($rowStaff = mysql_fetch_array($rsStaff)){
     }
 ?>
 
