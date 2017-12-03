@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
 require 'lib/rb.php';
 R::setup( 'mysql:host=localhost;dbname=ot','root', '' ); //for both mysql or mariaDB
 session_start();
