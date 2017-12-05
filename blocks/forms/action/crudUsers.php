@@ -1,5 +1,3 @@
 <?php 
-    require 'db.php';
-
-    echo "Done!";    
+    echo "Done!";
 ?>

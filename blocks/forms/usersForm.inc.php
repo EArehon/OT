@@ -1,4 +1,4 @@
-<form action="">
+<form action ="<?php echo $_SERVER["PHP_SELF"].'?option=userManager'?>"  method="POST">
     <div class="table">
         <div class="row">
             <div class="cell"><label for="name">Имя пользователя*</label></div>
@@ -25,7 +25,7 @@
             <div class="cell"><input type="text" id="departmen"></div>
         </div>
     </div>
-    <button  type="submit">Отправить</button>
+    <button  type="submit" name="createNewUser">Отправить</button>
 
 
 </form>
