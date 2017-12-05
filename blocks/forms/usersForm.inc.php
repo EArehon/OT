@@ -10,13 +10,22 @@
         </div>
         <div class="row">
             <div class="cell"><label for="password">Пароль*</label></div>
-            <div class="cell"><input type="text" id="password"></div>
+            <div class="cell"><input type="password" id="password"></div>
         </div>
         <div class="row">
-            <div class="cell"><label for="password2">Повтор пароля*</label></div>
-            <div class="cell"><input type="text" id="password2"></div>
+            <div class="cell"><label for="passwordConfirm">Повтор пароля*</label></div>
+            <div class="cell"><input type="password" id="passwordConfirm"></div>
+        </div>
+        <div class="row">
+            <div class="cell"><label for="role">Роль*</label></div>
+            <div class="cell"><input type="text" id="role"></div>
+        </div>
+        <div class="row">
+            <div class="cell"><label for="departmen">Отдел*</label></div>
+            <div class="cell"><input type="text" id="departmen"></div>
         </div>
     </div>
+    <button  type="submit">Отправить</button>
 
 
 </form>
