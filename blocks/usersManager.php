@@ -1,13 +1,11 @@
 <?php
+    include '/blocks/forms/action/crudUsers.php';
     $data = $_POST;
 
     if(isset($_POST['newUser'])){
         //echo "Тут нужно вывести форму";
         include '/blocks/forms/usersForm.inc.php';
     }
-    elseif(isset($data['createNewUser'])){
-        include '/blocks/forms/action/crudUsers.php';
-    }   
     else{
         $users = R::getAll("SELECT * FROM users");
         $lengthUsers = count($users);
