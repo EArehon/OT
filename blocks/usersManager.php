@@ -16,9 +16,13 @@
             </form>
         </div>
 <?php
-
+        echo '<form action="'.$_SERVER["PHP_SELF"].'?option=userManager" method="POST" name="usersTable">';
         foreach ($users as $akk){
-            echo $akk['name']."<hr>";
+            printf('
+            <input type="checkbox" name="id[]" value="%s">%s <hr>
+            ', $akk['id'], $akk['name']);
         }
+        echo '<button type="subbmit" name="deleteUser">Удалить</button>';
+        echo '</form>';
     }
 ?>

@@ -11,4 +11,11 @@
 
         echo '<div style="color:green;">Пользователь добавлен в базу!</div>';
     }
+
+    if(isset($data['deleteUser'])){
+        $ids = $data['id'];
+        if(count($ids)){
+            R::exec("DELETE FROM 'users' WHERE 'id' IN (".R::genSlots($ids).")", $ids);
+        }
+    }
 ?>
