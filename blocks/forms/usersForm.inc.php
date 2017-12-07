@@ -2,11 +2,11 @@
     <div class="table">
         <div class="row">
             <div class="cell"><label for="name">Имя пользователя*</label></div>
-            <div class="cell"><input type="text" name="name" id="name"></div>
+            <div class="cell"><input type="text" name="name" id="name" value="<?php echo @$user['name'];?>"></div>
         </div>
         <div class="row">
             <div class="cell"><label for="login">Логин*</label></div>
-            <div class="cell"><input type="text" name="login" id="login"></div>
+            <div class="cell"><input type="text" name="login" id="login" value="<?php echo @$user['login'];?>"></div>
         </div>
         <div class="row">
             <div class="cell"><label for="password">Пароль*</label></div>
@@ -18,15 +18,21 @@
         </div>
         <div class="row">
             <div class="cell"><label for="role">Роль*</label></div>
-            <div class="cell"><input type="text" name="role" id="role"></div>
+            <div class="cell"><input type="text" name="role" id="role" value="<?php echo @$user['role_id'];?>"></div>
         </div>
         <div class="row">
             <div class="cell"><label for="departmen">Отдел*</label></div>
-            <div class="cell"><input type="text" name="departmen" id="departmen"></div>
+            <div class="cell"><input type="text" name="departmen" id="departmen" value="<?php echo @$user['id_departmen'];?>"></div>
         </div>
     </div>
-    <button  type="submit" name="createNewUser">Отправить</button>
-
-
+    
+    <?php 
+        if(!isset($_GET['id'])){
+            echo '<button  type="submit" name="createNewUser">Создать</button>';
+        }
+        else{
+            echo '<button  type="submit" name="updateUser">Изменить</button>';
+        }
+    ?>
 </form>
 
