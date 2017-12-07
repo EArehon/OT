@@ -9,13 +9,18 @@
         $newUser->id_departmen = $data['departmen'];
         R::store($newUser);
 
-        echo '<div style="color:green;">Пользователь добавлен в базу!</div>';
+        echo '<div style="color:green;">Пользователь добавлен в базу.</div>';
     }
 
     if(isset($data['deleteUser'])){
         $ids = $data['id'];
-        if(count($ids)){
-            R::exec("DELETE FROM 'users' WHERE 'id' IN (".R::genSlots($ids).")", $ids);
+        $iiiii = implode(",",$ids);
+        if(count($ids)>0){
+            R::exec('DELETE FROM users WHERE id IN ('.implode(",",$ids).')');
+            echo '<div style="color:green;">Пользователь удален из базы.</div>';
+        }
+        else{
+            echo '<div style="color:red;">Пользователь для удаления не выбран.</div>';
         }
     }
 ?>

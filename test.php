@@ -1,8 +1,14 @@
-<form action ="<?php echo $_SERVER["PHP_SELF"].'?option=userManager'?>"  method="POST">
+<?php 
+    echo "akukaracha!";
+
+
+?>
+<hr>
+<form action ="test.php"  method="POST">
     <div class="table">
         <div class="row">
             <div class="cell"><label for="name">Имя пользователя*</label></div>
-            <div class="cell"><input type="text" name="name" id="name" value="<?php echo @$user['name'];?>"></div>
+            <div class="cell"><input type="text" name="name" id="name"></div>
         </div>
         <div class="row">
             <div class="cell"><label for="login">Логин*</label></div>
@@ -29,4 +35,3 @@
 
 
 </form>
-
