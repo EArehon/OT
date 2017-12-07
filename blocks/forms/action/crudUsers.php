@@ -14,8 +14,15 @@
 
     if(isset($data['deleteUser'])){
         $ids = $data['id'];
-        if(count($ids)){
-            R::exec("DELETE FROM 'users' WHERE 'id' IN (".R::genSlots($ids).")", $ids);
+
+        var_dump($ids);
+        echo  count($ids);
+        echo R::genSlots($ids);
+        $idss[]=array(11,12);
+
+        if(count($ids)>0){
+            R::exec("DELETE FROM `users` WHERE `id` IN (?,?)", $idss);
+            echo '!!!!!!!!!!!!!!';
         }
     }
 ?>
