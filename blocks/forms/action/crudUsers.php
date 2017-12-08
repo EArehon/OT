@@ -14,7 +14,6 @@
 
     if(isset($data['deleteUser'])){
         $ids = $data['id'];
-        $iiiii = implode(",",$ids);
         if(count($ids)>0){
             R::exec('DELETE FROM users WHERE id IN ('.implode(",",$ids).')');
             echo '<div style="color:green;">Пользователь удален из базы.</div>';
@@ -22,5 +21,18 @@
         else{
             echo '<div style="color:red;">Пользователь для удаления не выбран.</div>';
         }
+    }
+
+    if (isset($data['updateUser'])){
+        $user = R::load('users', $data['userId']);
+
+        $user->name = $data['name'];
+        $user->login = $data['login'];
+        $user->password = $data['password'];
+        $user->role_id = $data['role'];
+        $user->id_departmen = $data['departmen'];
+
+        R::store($user);
+        echo '<div style="color:green;">Изменения внесены в базу.</div>';
     }
 ?>

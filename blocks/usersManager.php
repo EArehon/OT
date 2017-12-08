@@ -10,9 +10,8 @@
 
         if(isset($_GET['id'])){
             $userId = $_GET['id'];
-            echo $userId;
             $user = R::load('users', $userId);
-            echo $user->name;
+
             include '/blocks/forms/usersForm.inc.php';
         }
         else{
