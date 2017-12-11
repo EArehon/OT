@@ -1,11 +1,64 @@
 <script>
+    function showError(container, errorMessage) {
+      container.className = 'error';
+      var msgElem = document.createElement('span');
+      msgElem.className = "error-message";
+      msgElem.innerHTML = errorMessage;
+      container.appendChild(msgElem);
+    }
+
+    function resetError(container) {
+      container.className = '';
+      if (container.lastChild.className == "error-message") {
+        container.removeChild(container.lastChild);
+      }
+    }
+    
     function validate(form){
+        
         var elems = form.elements;
 
+        resetError(elems.name.parentNode);
         if(!elems.name.value){
-            alert("Не введено имя!");
+            showError(elems.name.parentNode, ' Введите имя пользователя.');
             return false;
         }
+        
+        reg=/[А-Яа-яЁё]/;
+        resetError(elems.name.parentNode);
+        if(reg.test(elems.name.value)){
+            showError(elems.name.parentNode, ' Имя пользователя должно содержать только буквы русского алфавита.');
+            return false;
+        }
+       
+        resetError(elems.login.parentNode);
+        if(!elems.login.value){
+            showError(elems.login.parentNode, ' Укажите логин.');
+            return false;
+        }
+
+
+
+        resetError(elems.password.parentNode);
+        if(!elems.password.value){
+            showError(elems.password.parentNode, ' Введите пароль.');
+            return false;
+        }
+
+        resetError(elems.passwordConfirm.parentNode);
+        if(!elems.passwordConfirm.value){
+            showError(elems.passwordConfirm.parentNode, ' Введите пароль еще раз.');
+            return false;
+        }
+
+        resetError(elems.passwordConfirm.parentNode);
+        if(elems.passwordConfirm.value != elems.password.value){
+            showError(elems.passwordConfirm.parentNode, ' Пароли не совпадают.');
+            return false;
+        }
+
+
+
 
         return true;
     }
@@ -21,7 +74,7 @@
         </div>
         <div class="row">
             <div class="cell"><label for="login">Логин*</label></div>
-            <div class="cell"><input type="text" name="login" id="login" value="<?php echo @$user->login;?>"></div>
+            <div class="cell"><input type="text" name="login" id="login" value="<?php echo @$user->login;?>" ></div>
         </div>
         <div class="row">
             <div class="cell"><label for="password">Пароль*</label></div>
